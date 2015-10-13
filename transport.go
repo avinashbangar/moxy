@@ -1,6 +1,7 @@
 package moxy
 
 import (
+	"crypto/tls"
 	"net"
 	"net/http"
 	"time"
@@ -26,11 +27,11 @@ func NewTransport() *Transport {
 		MaxIdleConnsPerHost:   100000,
 		DisableCompression:    true,
 		ResponseHeaderTimeout: 30 * time.Second,
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		Dial: (&net.Dialer{
 			Timeout:   30 * time.Second,
 			KeepAlive: 30 * time.Second,
 		}).Dial,
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	return &Transport{tr: tr}
 }
