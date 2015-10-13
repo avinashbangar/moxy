@@ -30,6 +30,7 @@ func NewTransport() *Transport {
 			Timeout:   30 * time.Second,
 			KeepAlive: 30 * time.Second,
 		}).Dial,
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	return &Transport{tr: tr}
 }
