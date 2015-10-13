@@ -27,7 +27,7 @@ func NewTransport() *Transport {
 		MaxIdleConnsPerHost:   100000,
 		DisableCompression:    true,
 		ResponseHeaderTimeout: 30 * time.Second,
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		TLSClientConfig:       &tls.Config{InsecureSkipVerify: true},
 		Dial: (&net.Dialer{
 			Timeout:   30 * time.Second,
 			KeepAlive: 30 * time.Second,
